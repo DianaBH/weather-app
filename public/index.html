@@ -1,0 +1,71 @@
+<!--<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Weather App</h1>
+    <p>Use this site to get your weather</p>
+    <input type="text" id="locationInput" placeholder="Enter location">
+    <button onclick="fetchWeather()">Search</button>
+    <p id="weatherResult"></p>
+
+    <script>
+        async function fetchWeather() {
+            const location = document.getElementById("locationInput").value;
+            const result = document.getElementById("weatherResult");
+            
+            if (!location) {
+                result.innerText = "Por favor, ingrese una ubicación.";
+                return;
+            }
+
+            result.innerText = "Cargando...";
+            try {
+                //const response = await fetch(`/weather?location=${location}`);
+                const response = await fetch(`/weather?city=${location}`);
+                const data = await response.json();
+
+                if (data.error) {
+                    result.innerText = "No se encontró la dirección.";
+                } else {
+                    result.innerText = `${data.location.name}: ${data.current.weather_descriptions[0]}, ${data.current.temperature}°C`;
+                }
+            } catch (error) {
+                result.innerText = "Error al obtener los datos del clima.";
+            }
+        }
+    </script>
+</body>
+</html>-->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1>Weather App</h1>
+        <p>Por favor ingrese una ciudad para conocer el clima</p>
+        <input type="text" id="locationInput" placeholder="CIUDAD">
+        <p>
+            <button onclick="fetchWeather()">Buscar</button>
+        </p>
+        <div id="weatherResult" class="weather-info"></div>
+        <img id="weatherIcon" class="weather-icon" src="" alt="">
+    </div>
+
+    
+
+    
+    <script src="script.js"></script>
+</body>
+</html>
+
