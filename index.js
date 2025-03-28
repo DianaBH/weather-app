@@ -6,10 +6,8 @@ const path = require('path');
 const app = express();
 const PORT = 3000;
 
-// Servir archivos estáticos desde "public"
 app.use(express.static(path.join(__dirname, 'public')));
 
-// API KEY desde el archivo .env
 const API_KEY = process.env.WEATHERSTACK_API_KEY;
 
 app.get('/weather', async (req, res) => {
